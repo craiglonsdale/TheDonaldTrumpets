@@ -59,6 +59,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Enemies\ObamaDummy\ObamaDummyAttack.cs" />
+    <Compile Include="Assets\Scripts\Enemies\ObamaDummy\ObamaDummyHealth.cs" />
     <Compile Include="Assets\Scripts\Menu\MainMenu.cs" />
     <Compile Include="Assets\Scripts\Player\TrumpController.cs" />
     <Compile Include="Assets\Scripts\Player\TrumpHealth.cs" />
