@@ -1,10 +1,5 @@
-﻿using UnityEngine;
-
-public class ObamaDummyHealth : MonoBehaviour {
-
-    public int startingHealth = 100;
-    public int currentHealth;
-
+﻿public class ObamaDummyHealth :  EnemyHealth
+{
 	// Use this for initialization
 	void Start () {
         currentHealth = startingHealth;
@@ -14,9 +9,4 @@ public class ObamaDummyHealth : MonoBehaviour {
 	void Update () {
 		
 	}
-
-    void TakeDamage(int amount, Vector3 hitPoint)
-    {
-        currentHealth -= amount;
-    }
 }
