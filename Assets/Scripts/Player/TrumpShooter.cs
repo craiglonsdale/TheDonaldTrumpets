@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class TrumpShooter : MonoBehaviour {
@@ -22,7 +21,14 @@ public class TrumpShooter : MonoBehaviour {
         {
             // ParticleSystem.MainModule psMain = bulletEmitter.main;
             // psMain.startColor = particleColorGradient.Evaluate(Random.Range(0f, 1f));
-            bulletEmitter.Emit(1);
+            if (!bulletEmitter.isPlaying)
+            {
+                bulletEmitter.Play(true);
+            }
+        }
+        else if (bulletEmitter.isPlaying)
+        {
+            bulletEmitter.Stop(true);
         }
     }
 
