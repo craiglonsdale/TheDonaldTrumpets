@@ -191,6 +191,41 @@ public class Path {
         }
     }
 
+    public Vector2[] CalculateSpacedPoints(float spacing, float resolution = 1)
+    {
+        List<Vector2> evenlySpacedPoints = new List<Vector2>();
+        evenlySpacedPoints.Add(points[0]);
+        Vector2 prevPoint = points[0];
+        float distTravelled = 0;
+
+        for (int segIndex = 0; segIndex < NumSegments; segIndex++)
+        {
+            Vector2[] p = GetPointsInSegment(segIndex);
+            float controlNetLength = Vector2.Distance(p[0], p[1]) + Vector2.Distance(p[1], p[2]) + Vector2.Distance(p[2], p[3]);
+            float estimatedCurveLength = Vector2.Distance(p[0], p[3]) + controlNetLength * .5f;
+            int divisions = Mathf.CeilToInt(estimatedCurveLength * resolution * 10);
+            float t = 0;
+            while (t <= 1)
+            {
+                t += 1f/divisions;
+                Vector2 pointOnCurve = Bezier.EvaluateCubic(p[0], p[1], p[2], p[3], t);
+                distTravelled += Vector2.Distance(prevPoint, pointOnCurve);
+
+                while (distTravelled >= spacing)
+                {
+                    float overshoot = distTravelled - spacing;
+                    Vector2 newEvenlySpacedPoint = pointOnCurve + (prevPoint - pointOnCurve).normalized * overshoot;
+                    evenlySpacedPoints.Add(newEvenlySpacedPoint);
+                    distTravelled = overshoot;
+                    prevPoint = newEvenlySpacedPoint;
+                }
+                prevPoint = pointOnCurve;
+            }
+        }
+
+        return evenlySpacedPoints.ToArray();
+    }
+
     void AutoSetAnchorControlPoints(int anchorIndex)
     {
         Vector2 anchorPos = points[anchorIndex];
