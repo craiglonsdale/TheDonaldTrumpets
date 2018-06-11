@@ -61,12 +61,12 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Bezier.cs" />
     <Compile Include="Assets\Scripts\Debug\PathPlacer.cs" />
-    <Compile Include="Assets\Scripts\Enemies\EnemyAttack.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemyController.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemyHealth.cs" />
+    <Compile Include="Assets\Scripts\Enemies\EnemyShooter.cs" />
     <Compile Include="Assets\Scripts\Enemies\ObamaDummy\ObamaController.cs" />
-    <Compile Include="Assets\Scripts\Enemies\ObamaDummy\ObamaDummyAttack.cs" />
     <Compile Include="Assets\Scripts\Enemies\ObamaDummy\ObamaDummyHealth.cs" />
+    <Compile Include="Assets\Scripts\Enemies\ObamaDummy\ObamaDummyShooter.cs" />
     <Compile Include="Assets\Scripts\Menu\MainMenu.cs" />
     <Compile Include="Assets\Scripts\Particles\ParticleDecalData.cs" />
     <Compile Include="Assets\Scripts\Particles\ParticleDecalPool.cs" />

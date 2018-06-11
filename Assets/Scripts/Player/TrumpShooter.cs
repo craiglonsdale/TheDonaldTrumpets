@@ -23,7 +23,7 @@ public class TrumpShooter : MonoBehaviour {
             // psMain.startColor = particleColorGradient.Evaluate(Random.Range(0f, 1f));
             if (!bulletEmitter.isPlaying)
             {
-                bulletEmitter.Play(true);
+               // bulletEmitter.Play(true);
             }
         }
         else if (bulletEmitter.isPlaying)
@@ -35,7 +35,7 @@ public class TrumpShooter : MonoBehaviour {
     void OnParticleCollision(GameObject other)
     {
         //int numCollisionEvents = bulletEmitter.GetCollisionEvents(other, collisionEvents);
-        other.GetComponent<EnemyHealth>().TakeDamage(1);
+        // other.GetComponent<EnemyHealth>().TakeDamage(1);
         //Destroy(gameObject);
         //ParticlePhysicsExtensions.GetCollisionEvents(particleLauncher, other, collisionEvents);
 
