@@ -39,10 +39,11 @@ public abstract class EnemyShooter : MonoBehaviour {
         if (timer >= timeBetweenAttacks)
         {
             Debug.Log("Shooting Start");
-            //if (!bulletEmitter.isPlaying)
-            //{
+            if (!bulletEmitter.isPlaying)
+            {
                 bulletEmitter.Play(true);
-            //}
+            }
+            // Attack();
             attackFinished = false;
             ResetTimer();
         }
@@ -57,6 +58,10 @@ public abstract class EnemyShooter : MonoBehaviour {
         {
             Debug.Log("SHooting stop");
             bulletEmitter.Stop(true);
+            if (bulletEmitter.isStopped)
+            {
+                Debug.Log("Shooter Stopped");
+            }
             attackFinished = true;
             ResetAttackTimer();
         }

@@ -67,6 +67,7 @@
     <Compile Include="Assets\Scripts\Enemies\ObamaDummy\ObamaController.cs" />
     <Compile Include="Assets\Scripts\Enemies\ObamaDummy\ObamaDummyHealth.cs" />
     <Compile Include="Assets\Scripts\Enemies\ObamaDummy\ObamaDummyShooter.cs" />
+    <Compile Include="Assets\Scripts\LevelController.cs" />
     <Compile Include="Assets\Scripts\Menu\MainMenu.cs" />
     <Compile Include="Assets\Scripts\Particles\ParticleDecalData.cs" />
     <Compile Include="Assets\Scripts\Particles\ParticleDecalPool.cs" />

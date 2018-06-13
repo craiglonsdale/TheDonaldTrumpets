@@ -6,6 +6,6 @@ public class ObamaDummyShooter : EnemyShooter {
 
     public override void Attack()
     {
-        
+
     }
 }
