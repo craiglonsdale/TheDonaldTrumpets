@@ -35,7 +35,7 @@ public class TrumpShooter : MonoBehaviour {
     void OnParticleCollision(GameObject other)
     {
         //int numCollisionEvents = bulletEmitter.GetCollisionEvents(other, collisionEvents);
-        // other.GetComponent<EnemyHealth>().TakeDamage(1);
+        other.GetComponent<EnemyHealth>().TakeDamage(1);
         //Destroy(gameObject);
         //ParticlePhysicsExtensions.GetCollisionEvents(particleLauncher, other, collisionEvents);
 

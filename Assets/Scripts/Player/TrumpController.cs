@@ -5,13 +5,23 @@ public class TrumpController : MonoBehaviour {
     public float moveSpeed;
     public float pushBack;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    TrumpHealth trumpHealth;
+
+    // Use this for initialization
+    void Start()
+    {
+        var trump = GameObject.FindGameObjectWithTag("Trump");
+        trumpHealth = trump.GetComponent<TrumpHealth>();
+    }
+
+    // Update is called once per frame
+    void Update () {
+
+        if (trumpHealth.currentHealth <= 0)
+        {
+            return;
+        }
+
         var rawHorizontalInput = Input.GetAxisRaw("Horizontal");
         var rawVerticalInput = Input.GetAxisRaw("Vertical");
 

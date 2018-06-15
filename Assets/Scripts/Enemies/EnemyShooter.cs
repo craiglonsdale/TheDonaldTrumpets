@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class EnemyShooter : MonoBehaviour {
@@ -10,9 +11,7 @@ public abstract class EnemyShooter : MonoBehaviour {
     public Gradient particleColorGradient;
     public ParticleDecalPool splatDecalPool;
 
-    bool attackFinished = true;
-    float timer;
-    float attackTimer;
+    bool isWaiting;
     GameObject trump;
     TrumpHealth trumpHealth;
     EnemyHealth enemyHealth;
@@ -25,58 +24,43 @@ public abstract class EnemyShooter : MonoBehaviour {
         trumpHealth = trump.GetComponent<TrumpHealth>();
         enemyHealth = GetComponent<EnemyHealth>();
         collisionEvents = new List<ParticleCollisionEvent>();
+        isWaiting = false;
+        var main = bulletEmitter.main;
+        main.duration = attackTime;
+        bulletEmitter.Play(true);
     }
 
     // Update is called once per frame
     void Update()
-    {
-        if (attackFinished)
+    {        
+        if (isWaiting)
         {
-            timer += Time.deltaTime;
-            Debug.Log("Timer " + timer);
+            StartCoroutine(WaitForIt());
         }
-
-        if (timer >= timeBetweenAttacks)
+        if (!isWaiting)
         {
-            Debug.Log("Shooting Start");
-            if (!bulletEmitter.isPlaying)
-            {
-                bulletEmitter.Play(true);
-            }
-            // Attack();
-            attackFinished = false;
-            ResetTimer();
-        }
-        
-        if (bulletEmitter.isPlaying)
-        {
-            attackTimer += Time.deltaTime;
-            Debug.Log("Attack Timer " + attackTimer);
-        }
-
-        if (attackTimer >= attackTime)
-        {
-            Debug.Log("SHooting stop");
-            bulletEmitter.Stop(true);
-            if (bulletEmitter.isStopped)
-            {
-                Debug.Log("Shooter Stopped");
-            }
-            attackFinished = true;
-            ResetAttackTimer();
+            StartCoroutine(Shooting());
         }
     }
 
     public abstract void Attack();
 
-    private void ResetAttackTimer()
+    IEnumerator WaitForIt()
     {
-        attackTimer = 0;
+        // bulletEmitter.Stop(true);
+        yield return new WaitForSeconds(timeBetweenAttacks);
+        isWaiting = false;
+        bulletEmitter.Play(true);
+        //Debug.Log("IsWaiting " + isWaiting + " " + timeBetweenAttacks);
     }
 
-    private void ResetTimer()
+    IEnumerator Shooting()
     {
-        timer = 0;
+        // bulletEmitter.Play(true);
+        //isWaiting = false;
+        yield return new WaitUntil(() => bulletEmitter.isStopped);
+        isWaiting = true;
+        //Debug.Log("IsWaiting " + isWaiting + " " + attackTime);
     }
 
     void OnParticleCollision(GameObject other)
