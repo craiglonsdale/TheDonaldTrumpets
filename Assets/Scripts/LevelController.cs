@@ -12,22 +12,25 @@ public class LevelController : MonoBehaviour {
     public EnemyHealth enemyHealth;
 
     private string nextScene;
-
+    private bool transitioning;
 	// Use this for initialization
 	void Start () {
-		
+        transitioning = false;
 	}
 	
+    public void startNextScene(string sceneName)
+    {
+        if (!transitioning)
+        {
+            nextScene = sceneName;
+            transitioning = true;
+        }
+    }
+
 	// Update is called once per frame
 	void Update () {
-		if (playerHealth.currentHealth <= 0)
+        if (transitioning)
         {
-            nextScene = "Death";
-            StartCoroutine(Fading());
-        }
-        if (enemyHealth.currentHealth <= 0)
-        {
-            nextScene = "Win";
             StartCoroutine(Fading());
         }
 	}

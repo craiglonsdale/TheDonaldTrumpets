@@ -4,6 +4,7 @@ public class TrumpController : MonoBehaviour {
 
     public float moveSpeed;
     public float pushBack;
+    public LevelController levelController;
 
     TrumpHealth trumpHealth;
 
@@ -19,6 +20,7 @@ public class TrumpController : MonoBehaviour {
 
         if (trumpHealth.currentHealth <= 0)
         {
+            levelController.startNextScene("Death");
             return;
         }
 
