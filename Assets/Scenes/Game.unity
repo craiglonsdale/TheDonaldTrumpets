@@ -1076,7 +1076,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2
+      scalar: 3
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -1695,7 +1695,7 @@ ParticleSystem:
     x:
       serializedVersion: 2
       minMaxState: 0
-      scalar: -15
+      scalar: -5
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -2172,7 +2172,7 @@ ParticleSystem:
     radial:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 4
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -5052,6 +5052,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 7
   pushBack: -1.5
+  levelController: {fileID: 2088461269}
 --- !u!60 &289338989
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -5501,9 +5502,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 100
+  m_MaxValue: 1000
   m_WholeNumbers: 0
-  m_Value: 100
+  m_Value: 1000
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -6587,7 +6588,7 @@ GameObject:
   - component: {fileID: 1545156555}
   m_Layer: 8
   m_Name: Obama Dummy
-  m_TagString: Untagged
+  m_TagString: Obama
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7190,7 +7191,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e92fc7dd9f3efa64dbcd39983988ecf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 100
+  startingHealth: 1000
   currentHealth: 0
   healthSlider: {fileID: 399958714}
   fullHealth: {fileID: 0}
@@ -7208,6 +7209,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa4f2801c5dc49040a1e9be50181f1d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelController: {fileID: 2088461269}
   IdlePath: {fileID: 1155356087}
   SpeedMultiplier: 3
 --- !u!1 &1871674149
@@ -7453,7 +7455,7 @@ ParticleSystem:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2032174945}
   serializedVersion: 5
-  lengthInSec: 5
+  lengthInSec: 0.1
   simulationSpeed: 1
   stopAction: 0
   looping: 1

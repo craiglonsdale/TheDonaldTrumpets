@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 
 public class TrumpShooter : MonoBehaviour {
-
     public ParticleSystem bulletEmitter;
     public ParticleSystem contactEmitter;
     public Gradient particleColorGradient;
@@ -24,6 +24,7 @@ public class TrumpShooter : MonoBehaviour {
             if (!bulletEmitter.isPlaying)
             {
                bulletEmitter.Play(true);
+               Debug.Log(bulletEmitter.isPlaying);
             }
         }
         else if (bulletEmitter.isPlaying)
@@ -32,6 +33,19 @@ public class TrumpShooter : MonoBehaviour {
         }
     }
 
+    IEnumerator Shooting()
+    {
+        // bulletEmitter.Stop(true);
+        yield return new WaitUntil(() => !Input.GetButton("Fire1"));
+        bulletEmitter.Stop(true);
+    }
+
+    IEnumerator Wait()
+    {
+        // bulletEmitter.Stop(true);
+        yield return new WaitUntil(() => Input.GetButton("Fire1"));
+        bulletEmitter.Play(true);
+    }
     void OnParticleCollision(GameObject other)
     {
         //int numCollisionEvents = bulletEmitter.GetCollisionEvents(other, collisionEvents);
