@@ -25,6 +25,11 @@ public class LevelController : MonoBehaviour {
             nextScene = "Death";
             StartCoroutine(Fading());
         }
+        if (enemyHealth.currentHealth <= 0)
+        {
+            nextScene = "Win";
+            StartCoroutine(Fading());
+        }
 	}
 
     IEnumerator Fading()

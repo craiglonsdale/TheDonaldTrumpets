@@ -49,28 +49,28 @@ public class TrumpHealth : MonoBehaviour {
         if (currentHealth > 75)
         {
             fullHealth.enabled = true;
-            quarterHealth.enabled = false;
+            threeQuaterHealth.enabled = false;
             halfHealth.enabled = false;
             quarterHealth.enabled = false;
         }
         else if (currentHealth <= 75 && currentHealth > 50)
         {
             fullHealth.enabled = false;
-            quarterHealth.enabled = true;
+            threeQuaterHealth.enabled = true;
             halfHealth.enabled = false;
             quarterHealth.enabled = false;
         }
         else if (currentHealth <= 50 && currentHealth > 25)
         {
             fullHealth.enabled = false;
-            quarterHealth.enabled = false;
+            threeQuaterHealth.enabled = false;
             halfHealth.enabled = true;
             quarterHealth.enabled = false;
         }
         else
         {
             fullHealth.enabled = false;
-            quarterHealth.enabled = false;
+            threeQuaterHealth.enabled = false;
             halfHealth.enabled = false;
             quarterHealth.enabled = true;
         }

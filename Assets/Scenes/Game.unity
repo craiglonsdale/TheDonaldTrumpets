@@ -312,7 +312,7 @@ ParticleSystem:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 245520431}
   serializedVersion: 5
-  lengthInSec: 4
+  lengthInSec: 0.0001
   simulationSpeed: 1
   stopAction: 0
   looping: 0
@@ -384,7 +384,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 5
+      scalar: 3
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -4916,8 +4916,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b13685cd2bd0ba443a8fa83628306ad4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeBetweenAttacks: 0.5
-  attackTime: 4
+  timeBetweenAttacks: 2
+  attackTime: 10
   attackDamage: 20
   bulletEmitter: {fileID: 245520432}
   contactEmitter: {fileID: 0}
