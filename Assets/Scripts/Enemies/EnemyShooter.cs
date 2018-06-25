@@ -11,10 +11,10 @@ public abstract class EnemyShooter : MonoBehaviour {
     public Gradient particleColorGradient;
     public ParticleDecalPool splatDecalPool;
 
-    bool isWaiting;
+    protected bool isWaiting;
     GameObject trump;
     TrumpHealth trumpHealth;
-    EnemyHealth enemyHealth;
+    protected EnemyHealth enemyHealth;
     List<ParticleCollisionEvent> collisionEvents;
 
 
@@ -41,30 +41,28 @@ public abstract class EnemyShooter : MonoBehaviour {
         {
             StartCoroutine(Shooting());
         }
+        Attack();
     }
 
     public abstract void Attack();
 
     IEnumerator WaitForIt()
     {
-        // bulletEmitter.Stop(true);
         yield return new WaitForSeconds(timeBetweenAttacks);
         isWaiting = false;
+        Debug.Log("Starting SHooting");
         bulletEmitter.Play(true);
-        //Debug.Log("IsWaiting " + isWaiting + " " + timeBetweenAttacks);
     }
 
     IEnumerator Shooting()
     {
-        // bulletEmitter.Play(true);
-        //isWaiting = false;
         yield return new WaitUntil(() => bulletEmitter.isStopped);
         isWaiting = true;
-        //Debug.Log("IsWaiting " + isWaiting + " " + attackTime);
     }
 
     void OnParticleCollision(GameObject other)
     {
-        trumpHealth.TakeDamage(attackDamage);
+        var damage = other.transform.parent.gameObject.GetComponent<TrumpShooter>().attackDamage;
+        enemyHealth.TakeDamage(damage);
     }
 }

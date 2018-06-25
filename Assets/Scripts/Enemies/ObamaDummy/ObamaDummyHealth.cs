@@ -1,4 +1,7 @@
-﻿public class ObamaDummyHealth :  EnemyHealth
+﻿
+using UnityEngine;
+
+public class ObamaDummyHealth :  EnemyHealth
 {
 	// Use this for initialization
 	void Start () {
@@ -7,6 +10,7 @@
 	
 	// Update is called once per frame
 	void Update () {
-		
+        
+        Debug.Log(currentHealth);
 	}
 }

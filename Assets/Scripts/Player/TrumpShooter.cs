@@ -7,11 +7,14 @@ public class TrumpShooter : MonoBehaviour {
     public ParticleSystem contactEmitter;
     public Gradient particleColorGradient;
     public ParticleDecalPool splatDecalPool;
-
+    public int attackDamage;
     List<ParticleCollisionEvent> collisionEvents;
+    TrumpHealth health;
+
     // Use this for initialization
     void Start () {
         collisionEvents = new List<ParticleCollisionEvent>();
+        health = GetComponent<TrumpHealth>();
     }
 	
 	// Update is called once per frame
@@ -24,7 +27,6 @@ public class TrumpShooter : MonoBehaviour {
             if (!bulletEmitter.isPlaying)
             {
                bulletEmitter.Play(true);
-               Debug.Log(bulletEmitter.isPlaying);
             }
         }
         else if (bulletEmitter.isPlaying)
@@ -46,18 +48,10 @@ public class TrumpShooter : MonoBehaviour {
         yield return new WaitUntil(() => Input.GetButton("Fire1"));
         bulletEmitter.Play(true);
     }
+
     void OnParticleCollision(GameObject other)
     {
-        //int numCollisionEvents = bulletEmitter.GetCollisionEvents(other, collisionEvents);
-        other.GetComponent<EnemyHealth>().TakeDamage(1);
-        //Destroy(gameObject);
-        //ParticlePhysicsExtensions.GetCollisionEvents(particleLauncher, other, collisionEvents);
-
-        //for (int i = 0; i < collisionEvents.Count; i++)
-        //{
-        //    splatDecalPool.ParticleHit(collisionEvents[i], particleColorGradient);
-        //    EmitAtLocation(collisionEvents[i]);
-        //}
-
+        var damage = other.transform.parent.gameObject.GetComponent<EnemyShooter>().attackDamage;
+        health.TakeDamage(damage);
     }
 }
